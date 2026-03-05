@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "csadv"
+version = "0.1.0"
+description = "Cubed-sphere advection experiments (CPU baseline)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+]
+
+
+[project.scripts]
+csadv-conv = "csadv.cli:main"
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+numba = ["numba"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 88

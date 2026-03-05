@@ -1,0 +1,30 @@
+﻿# Virtual env
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.class
+
+# Build / dist
+build/
+dist/
+*.egg-info/
+
+# Test / lint cache
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# run outputs
+conv_result.json
+
