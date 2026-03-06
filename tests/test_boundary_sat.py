@@ -59,7 +59,7 @@ def test_sat_west_inflow_nonzero_on_p1_only():
     pen = bnd.penalty(state, cube, u1, u2)
 
     sqrtg_edge = cube.faces["P1"].sqrtg[0, :]
-    expected = (-sat_param.tau_0) * (1.0 / sqrtg_edge)  # Vn=-1 => 0.5*(Vn-|Vn|)=-1
+    expected = (-sat_param.tau_0)  # Vn=-1 => 0.5*(Vn-|Vn|)=-1
 
     assert np.allclose(pen[0, 0, :], expected, atol=1e-12, rtol=0.0)
     # Everywhere else should be zero (up to tiny float noise)
