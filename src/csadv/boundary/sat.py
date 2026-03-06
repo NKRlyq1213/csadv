@@ -102,19 +102,19 @@ class SatInflowPenalty(BoundaryScheme):
             Vn = u1f[-1, :]
             q_out = extract_boundary_val(state, idx, 1)
             sqrtg_edge = sqrtg[-1, :]
-            pen[-1, :] = _penalty_edge_numba(Vn, phi[-1, :], q_out, tau_N) if use_numba else _penalty_edge_numpy(Vn, phi[-1, :], q_out, tau_N)
+            pen[-1, :] += _penalty_edge_numba(Vn, phi[-1, :], q_out, tau_N) if use_numba else _penalty_edge_numpy(Vn, phi[-1, :], q_out, tau_N)
             
             # South
             Vn = -u2f[:, 0]
             q_out = extract_boundary_val(state, idx, 2)
             sqrtg_edge = sqrtg[:, 0]
-            pen[:, 0] = _penalty_edge_numba(Vn, phi[:, 0], q_out, tau_0) if use_numba else _penalty_edge_numpy(Vn, phi[:, 0], q_out, tau_0)
+            pen[:, 0] += _penalty_edge_numba(Vn, phi[:, 0], q_out, tau_0) if use_numba else _penalty_edge_numpy(Vn, phi[:, 0], q_out, tau_0)
 
             # North
             Vn = u2f[:, -1]
             q_out = extract_boundary_val(state, idx, 3)
             sqrtg_edge = sqrtg[:, -1]
-            pen[:, -1] = _penalty_edge_numba(Vn, phi[:, -1], q_out, tau_N) if use_numba else _penalty_edge_numpy(Vn, phi[:, -1], q_out, tau_N)
+            pen[:, -1] += _penalty_edge_numba(Vn, phi[:, -1], q_out, tau_N) if use_numba else _penalty_edge_numpy(Vn, phi[:, -1], q_out, tau_N)
 
             pen_global[idx] = pen
 
